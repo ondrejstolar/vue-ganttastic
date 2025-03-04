@@ -91,7 +91,6 @@ const weekendUnits = computed(() => {
 })
 
 const calculateLeft = (date: any) => {
-  console.log(date)
   return `${mapTimeToPosition(date)}px`
 }
 
