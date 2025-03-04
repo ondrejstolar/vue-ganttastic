@@ -1,14 +1,13 @@
 <template>
   <div
     :id="barConfig.id"
-    :class="['g-gantt-bar', barConfig.class || '']"
+    :class="['g-gantt-bar', barConfig.class || '', { highlighted: highlight }]"
     :style="{
       ...barConfig.style,
       position: 'absolute',
-      top: `${rowHeight * 0.1}px`,
+      top: `${rowHeight * 0.1 + 5}px`,
       left: `${xStart}px`,
       width: `${xEnd - xStart}px`,
-      height: `${rowHeight * 0.8}px`,
       zIndex: isDragging ? 3 : 2
     }"
     @mousedown="onMouseEvent"
@@ -23,7 +22,13 @@
         <div>
           {{ barConfig.label || "" }}
         </div>
-        <div v-if="barConfig.html" v-html="barConfig.html"/>
+        <div v-if="barConfig.html">
+          <div class="avatar2">
+            <div class="avatar-image">
+              <img :src="barConfig.html?.logo" />
+            </div>
+          </div>
+        </div>
       </slot>
     </div>
     <template v-if="barConfig.hasHandles">
@@ -46,6 +51,7 @@ import { BAR_CONTAINER_KEY } from "../provider/symbols"
 
 const props = defineProps<{
   bar: GanttBarObject
+  highlight: boolean
 }>()
 const emitBarEvent = provideEmitBarEvent()
 const config = provideConfig()
@@ -129,10 +135,11 @@ onMounted(() => {
 .g-gantt-bar-label {
   width: 100%;
   height: 100%;
+  font-size: 12px;
   box-sizing: border-box;
-  padding: 0 14px 0 14px; /* 14px is the width of the handle */
+  padding: 0 7px 0 7px; /* 14px is the width of the handle */
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 .g-gantt-bar-label > * {
@@ -160,5 +167,45 @@ onMounted(() => {
 
 .g-gantt-bar-label img {
   pointer-events: none;
+}
+
+.avatar2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-image {
+  width: 20px;
+  height: 20px;
+  overflow: hidden;
+}
+
+.avatar-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.highlighted {
+  animation: pulseHighlight 3s infinite alternate;
+  background-color: rgba(13, 71, 161, 0.9) !important;
+  border: 2px solid #0d47a1 !important;
+  color: white !important;
+}
+
+@keyframes pulseHighlight {
+  0% {
+    box-shadow: 0 0 10px 3px rgba(13, 71, 161, 1);
+    background-color: rgba(13, 71, 161, 1);
+  }
+  50% {
+    box-shadow: 0 0 12px 4px rgba(13, 71, 161, 0.8);
+    background-color: rgba(13, 71, 161, 0.85);
+  }
+  100% {
+    box-shadow: 0 0 10px 3px rgba(13, 71, 161, 1);
+    background-color: rgba(13, 71, 161, 1);
+  }
 }
 </style>

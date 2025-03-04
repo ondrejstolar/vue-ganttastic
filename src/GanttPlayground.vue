@@ -51,7 +51,7 @@ const bars1 = ref<GanttBarObject[]>([
     endDate: dayjs().hour(19).startOf("hour").format(format.value),
     ganttBarConfig: {
       id: "8621987329",
-      label: "I'm in a bundle",
+      label: { name: "I'm in a bundle" },
       bundle: "bundle2"
     }
   }
@@ -63,7 +63,7 @@ const bars2 = ref([
     endDate: dayjs().hour(19).startOf("hour").format(format.value),
     ganttBarConfig: {
       id: "1592311887",
-      label: "I'm in a bundle",
+      label: { name: "I'm in a bundle" },
       bundle: "bundle2",
       style: {
         background: "magenta"
@@ -75,7 +75,7 @@ const bars2 = ref([
     endDate: dayjs().add(2, "day").hour(19).startOf("hour").format(format.value),
     ganttBarConfig: {
       id: "7716981641",
-      label: "Lorem ipsum dolor",
+      label: { name: "I'm in a bundle" },
       hasHandles: true,
       style: {
         background: "#b74b52"
@@ -87,7 +87,7 @@ const bars2 = ref([
     endDate: dayjs().add(1, "day").hour(16).startOf("hour").format(format.value),
     ganttBarConfig: {
       id: "9716981641",
-      label: "Oh hey",
+      label: { name: "I'm in a bundle" },
       style: {
         background: "#69e064",
         borderRadius: "15px",
@@ -104,7 +104,7 @@ const bars3 = [
     endDate: "20.02.2024 16:45",
     ganttBarConfig: {
       id: "9876543210",
-      label: "Updated Bundle",
+      label: { name: "I'm in a bundle" },
       bundle: "bundle3",
       style: {
         background: "cyan"
@@ -116,7 +116,7 @@ const bars3 = [
     endDate: "10.03.2024 18:30",
     ganttBarConfig: {
       id: "1234567890",
-      label: "New Task",
+      label: { name: "I'm in a bundle" },
       hasHandles: true,
       style: {
         background: "#f79466"
@@ -128,7 +128,7 @@ const bars3 = [
     endDate: "30.04.2024 21:00",
     ganttBarConfig: {
       id: "2468135790",
-      label: "Greetings",
+      label: { name: "I'm in a bundle" },
       style: {
         background: "#aabbcc",
         borderRadius: "8px",
@@ -145,7 +145,7 @@ const bars4 = [
     endDate: "15.03.2024 16:30",
     ganttBarConfig: {
       id: "9876543210",
-      label: "Novo Pacote",
+      label: { name: "I'm in a bundle" },
       bundle: "pacote3",
       style: {
         background: "pink"
@@ -157,7 +157,7 @@ const bars4 = [
     endDate: "15.04.2024 22:15",
     ganttBarConfig: {
       id: "2468135790",
-      label: "hello folks",
+      label: { name: "I'm in a bundle" },
       style: {
         background: "#ffd700",
         borderRadius: "10px",
@@ -178,7 +178,7 @@ const addBar = () => {
     ganttBarConfig: {
       id: "test1",
       hasHandles: true,
-      label: "Hello!",
+      label: { name: "I'm in a bundle" },
       style: {
         background: "#5484b7",
         borderRadius: "20px"

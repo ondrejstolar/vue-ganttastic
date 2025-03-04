@@ -3,7 +3,7 @@ import type { InjectionKey, Ref } from "vue"
 import type { GGanttChartConfig } from "../components/GGanttChart.vue"
 import type { GanttBarObject } from "../types"
 
-export type ChartRow = { label: string; bars: GanttBarObject[] }
+export type ChartRow = { label: { name: string; color?: string }; bars: GanttBarObject[] }
 export type GetChartRows = () => ChartRow[]
 export type EmitBarEvent = (
   e: MouseEvent,

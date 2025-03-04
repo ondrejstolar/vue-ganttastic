@@ -5,8 +5,8 @@ export type GanttBarObject = {
   [key: string]: any
   ganttBarConfig: {
     id: string
-    label?: string
-    html?: string
+    label?: { name?: string; color?: string }
+    html?: { logo?: string }
     hasHandles?: boolean
     immobile?: boolean
     bundle?: string

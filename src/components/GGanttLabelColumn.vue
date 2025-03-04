@@ -8,7 +8,7 @@
     <div class="g-label-column-rows">
       <div
         v-for="({ label }, index) in getChartRows()"
-        :key="`${label}_${index}`"
+        :key="`${label.name}_${index}`"
         class="g-label-column-row"
         :style="{
           background: index % 2 === 0 ? colors.ternary : colors.quartenary,
@@ -16,7 +16,7 @@
         }"
       >
         <slot name="label-column-row" :label="label">
-          <span>{{ label }}</span>
+          <span>{{ label.name }}</span>
         </slot>
       </div>
     </div>

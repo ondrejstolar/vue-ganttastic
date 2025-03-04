@@ -30,7 +30,13 @@
           width
         }"
       >
-        <slot name="timeunit" :label="label" :value="value" :date="date">
+        <slot v-if="precision === 'day'" name="timeunit" :label="label" :value="value" :date="date">
+          <div style="display: flex; flex-direction: column">
+            <div style="font-size: 14px">{{ dayjs(date).format("DD") }}</div>
+            <div>{{ dayjs(date).format("ddd") }}</div>
+          </div>
+        </slot>
+        <slot v-else name="timeunit" :label="label" :value="value" :date="date">
           {{ label }}
         </slot>
         <div
@@ -46,6 +52,7 @@
 <script setup lang="ts">
 import provideConfig from "../provider/provideConfig.js"
 import useTimeaxisUnits from "../composables/useTimeaxisUnits.js"
+import dayjs from "dayjs"
 
 const { precision, colors } = provideConfig()
 const { timeaxisUnits } = useTimeaxisUnits()
@@ -61,6 +68,7 @@ const { timeaxisUnits } = useTimeaxisUnits()
   z-index: 4;
   display: flex;
   flex-direction: column;
+  text-align: center !important;
 }
 
 .g-timeunits-container {
